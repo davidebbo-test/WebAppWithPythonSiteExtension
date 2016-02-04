@@ -25,7 +25,7 @@
       "name": "[parameters('siteName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('siteLocation')]",
-      "dependsOn": [ "[parameters('hostingPlanName')]" ],
+      "dependsOn": [ "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]" ],
       "properties": {
         "serverFarmId": "[parameters('hostingPlanName')]"
       },
@@ -35,7 +35,7 @@
           "name": "Python",
           "type": "siteextensions",
           "dependsOn": [
-            "[parameters('siteName')]"
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
           ],
           "properties": {
           }
